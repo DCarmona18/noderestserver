@@ -43,7 +43,7 @@ const usuariosPut = async (req, res = response) => {
 
 const usuariosGet = async (req = request, res = response) => {
     const{ limite = 5, desde = 0 } = req.query;
-    const query = {estado=true};
+    const query = {estado:true};
     const usuarios = Usuario.find(query)
         .skip(Number(desde))
         .limit(Number(limite)); 
@@ -63,11 +63,8 @@ const usuariosGet = async (req = request, res = response) => {
 
 const usuariosDelete = async(req, res = response) => {
     const { id } = req.params;
-    // Borrado físico
-    // const usuario = await Usuario.findByIdAndDelete(id);
 
     const usuario = await Usuario.findByIdAndUpdate(id, {estado:false});
-
     res.json({
         usuario
     })
