@@ -29,7 +29,7 @@ const validarJWT = async(req, res = response, next) => {
                 msg: 'Token no válido - usuario inactivo'
             });
         }
-
+        
         req.usuario = usuario;
     } catch (error) {
         res.status(401).json({
